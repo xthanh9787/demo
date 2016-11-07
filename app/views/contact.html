@@ -1,0 +1,56 @@
+<div ng-controller="ContactController">
+    <form class="form-horizontal" name="form" ng-submit="register()" novalidate>
+
+        <div class="form-group">
+            <div class="form-group">
+                <label for="fullname" class="col-xs-3 control-label required">Họ và tên</label>
+                <div class="col-xs-9">
+                    <input name="fullname" type="text" class="form-control" placeholder="Họ và tên"  ng-model="fullname"  ng-minlength="6" ng-maxlength="50" ng-pattern="/^[a-zA-Z]+$/" required>
+                    <i class="fa fa-check text-success" ng-show="form.fullname.$dirty && form.fullname.$valid"></i>
+                    <div ng-show="form.fullname.$dirty && form.fullname.$invalid" class="text-danger"><i class="fa fa-times text-danger"></i>
+                    <span ng-show="form.fullname.$error.required">Họ tên không được bỏ trống</span>
+                    <span ng-show="form.fullname.$error.minlength">Họ tên phải dài hơn 6 kí tự</span>
+                    <span ng-show="form.fullname.$error.maxlength">Họ tên phải ngắn hơn 50 kí tự</span>
+                    <span ng-show="form.fullname.$error.pattern">Họ tên chỉ bao gồm các kí tự chữ cái</span>
+                    </div>
+                </div>
+            </div>
+            <label class="col-xs-3 control-label">Email</label>
+            <div class="col-xs-9">
+                <input type="email" name="email" class="form-control" placeholder="Email" ng-model="email" autocomplete="off" required >
+                <i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
+                <div ng-show="form.email.$dirty && form.email.$invalid" class="text-danger"><i class="fa fa-times text-danger"></i>
+                    <span ng-show="form.email.$error.required">Bạn chưa nhập địa chỉ email</span>
+                    <span ng-show="form.email.$error.email">Không đúng định dạng email</span>
+                </div>
+            </div>
+
+        </div>
+    
+   
+        <div class="form-group">
+            <label for="birthday" class="col-xs-3 control-label">Ngày sinh</label>
+            <div class="col-xs-9">
+                <input name="birthday" type="text" ng-model="birthday" class="form-control" placeholder="dd-mm-yyyy" >
+                <i class="fa fa-check text-success" ng-show="form.birthday.$dirty && form.birthday.$valid"></i>
+                <div ng-show="form.birthday.$dirty && form.birthday.$invalid" class="text-danger"><i class="fa fa-times text-danger"></i>Nhập ngày sinh theo đúng định dạng dd-mm-yyyy {{birthday}}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="message" class="col-xs-3 control-label required">Nội dung</label>
+            <div class="col-xs-9">
+                <input name="message" type="text" class="form-control" placeholder="Nội dung"  ng-model="message"  required>
+                <i class="fa fa-check text-success" ng-show="form.message.$dirty && form.message.$valid"></i>
+                <div ng-show="form.message.$dirty && form.message.$invalid" class="text-danger"><i class="fa fa-times text-danger"></i>
+                <span ng-show="form.message.$error.required">Nội dung không được bỏ trống</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-xs-9">
+                <button type="submit" class="btn btn-primary" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)">Gởi thông tin <i class="fa fa-sign-in"></i></button>
+            </div>
+        </div>
+</form>
+</div>
